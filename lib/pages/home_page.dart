@@ -1,5 +1,6 @@
 import 'package:bill_splitter/constants.dart';
 import 'package:bill_splitter/pages/result_page.dart';
+import 'package:bill_splitter/widgets/info_container.dart';
 import 'package:bill_splitter/widgets/keypad.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,11 @@ class _HomePageState extends State<HomePage> {
       totalBill;
     });
   }
+
+  String get totatlBil =>
+      totalBill.isEmpty || totalBill.length == 1 && totalBill[0] == ""
+          ? 0.toString()
+          : totalBill.join();
 
   @override
   Widget build(BuildContext context) {
@@ -50,77 +56,12 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  // margin: EdgeInsets.all(15),
-                  padding: EdgeInsets.symmetric(
-                    vertical: 20,
-                    horizontal: 10,
-                  ),
-                  color: Colors.amber,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Total',
-                            style: ktextStyle1.copyWith(fontSize: 20),
-                          ),
-                          Text(
-                            '${totalBill.isEmpty ? 0.toString() : totalBill.join()} \$',
-                            style: TextStyle(
-                              fontSize: 38,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Friends',
-                                style: ktextStyle1,
-                              ),
-                              Text(
-                                'Tax',
-                                style: ktextStyle1,
-                              ),
-                              Text(
-                                'Tip',
-                                style: ktextStyle1,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "$totalFriends",
-                                style: ktextStyle1,
-                              ),
-                              Text(
-                                "$totalTax %",
-                                style: ktextStyle1,
-                              ),
-                              Text(
-                                "$totalTip \$",
-                                style: ktextStyle1,
-                              ),
-                            ],
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                InfoContainer(
+                    info: "Total",
+                    totalBill: totatlBil,
+                    totalFriends: totalFriends,
+                    totalTax: totalTax,
+                    totalTip: totalTip),
                 SizedBox(
                   height: 10,
                 ),
@@ -264,25 +205,24 @@ class _HomePageState extends State<HomePage> {
                   height: 10,
                 ),
                 Container(
-                  width: double.infinity,
+                  // width: 10,
+                  // width: double.infinity,
                   color: Colors.green,
                   child: InkWell(
                     onTap: () {
-                      if (totalBill.length == 1 && totalBill[0] == "") {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return ResultPage(
-                                totalFriends: totalFriends,
-                                totalTip: totalTip,
-                                totalTax: totalTax,
-                                totalBill: totalBill,
-                              );
-                            },
-                          ),
-                        );
-                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ResultPage(
+                              totalFriends: totalFriends,
+                              totalTip: totalTip,
+                              totalTax: totalTax,
+                              totalBill: totalBill,
+                            );
+                          },
+                        ),
+                      );
                     },
                     child: Center(
                       child: Text(

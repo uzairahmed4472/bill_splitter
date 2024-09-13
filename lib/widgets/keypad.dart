@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Keypad extends StatefulWidget {
   Keypad({super.key, required this.totalBill, required this.changeBill});
 
-  final  List totalBill;
+  final List totalBill;
   final VoidCallback changeBill;
 
   @override
@@ -52,8 +52,12 @@ class _KeypadState extends State<Keypad> {
             onTap: () {
               setState(() {
                 if (keys[index] == keys.last) {
-                  widget.totalBill.removeLast();
-                  widget.changeBill();
+                  if (widget.totalBill.isEmpty) {
+                    widget.changeBill();
+                  } else {
+                    widget.totalBill.removeLast();
+                    widget.changeBill();
+                  }
                 } else {
                   widget.totalBill.add(keys[index]);
                   widget.changeBill();
