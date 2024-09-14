@@ -2,6 +2,7 @@ import 'package:bill_splitter/constants.dart';
 import 'package:bill_splitter/pages/home_page.dart';
 import 'package:bill_splitter/widgets/info_container.dart';
 import 'package:bill_splitter/widgets/page_header.dart';
+import 'package:bill_splitter/widgets/resuable_button.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatefulWidget {
@@ -22,16 +23,7 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  calculateAgain() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return HomePage();
-        },
-      ),
-    );
-  }
+  calculateAgain() {}
 
   String splitBill() {
     int friends = widget.totalFriends;
@@ -78,25 +70,19 @@ class _ResultPageState extends State<ResultPage> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                // width: double.infinity,
-                padding: EdgeInsets.all(5),
-                color: Color(0xffFE6623),
-                child: InkWell(
-                  onTap: () {
-                    calculateAgain();
-                  },
-                  child: Center(
-                    child: Text(
-                      "Calculate Again",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+              ResusableButton(
+                colour: Colors.red,
+                text: "Calculate Again",
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomePage();
+                      },
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),

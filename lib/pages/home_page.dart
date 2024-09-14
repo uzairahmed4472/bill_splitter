@@ -3,6 +3,7 @@ import 'package:bill_splitter/pages/result_page.dart';
 import 'package:bill_splitter/widgets/info_container.dart';
 import 'package:bill_splitter/widgets/keypad.dart';
 import 'package:bill_splitter/widgets/page_header.dart';
+import 'package:bill_splitter/widgets/resuable_button.dart';
 import 'package:bill_splitter/widgets/slider_box.dart';
 import 'package:bill_splitter/widgets/tax_box.dart';
 import 'package:bill_splitter/widgets/top_box.dart';
@@ -59,6 +60,8 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
+
+  onNavigate() {}
 
   @override
   Widget build(BuildContext context) {
@@ -134,37 +137,24 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  // width: 10,
-                  // width: double.infinity,
-                  color: Colors.green,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ResultPage(
-                              totalFriends: totalFriends,
-                              totalTip: totalTip,
-                              totalTax: totalTax,
-                              totalBill: totalBill,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    child: Center(
-                      child: Text(
-                        "Split Bill",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                ResusableButton(
+                  colour: Colors.green,
+                  text: "Split Bill",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ResultPage(
+                            totalFriends: totalFriends,
+                            totalTip: totalTip,
+                            totalTax: totalTax,
+                            totalBill: totalBill,
+                          );
+                        },
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ],
             ),
