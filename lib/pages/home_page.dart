@@ -4,6 +4,8 @@ import 'package:bill_splitter/widgets/info_container.dart';
 import 'package:bill_splitter/widgets/keypad.dart';
 import 'package:bill_splitter/widgets/page_header.dart';
 import 'package:bill_splitter/widgets/slider_box.dart';
+import 'package:bill_splitter/widgets/tax_box.dart';
+import 'package:bill_splitter/widgets/top_box.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,6 +35,28 @@ class _HomePageState extends State<HomePage> {
   void updateFriends(double newValue) {
     setState(() {
       totalFriends = newValue.round();
+    });
+  }
+
+  void onIncrement() {
+    setState(() {
+      totalTip++;
+    });
+  }
+
+  void onDecrement() {
+    setState(() {
+      totalTip--;
+    });
+  }
+
+  updateTax(value) {
+    setState(() {
+      if (value.isEmpty) {
+        totalTax = 0;
+      } else {
+        totalTax = int.parse(value);
+      }
     });
   }
 
@@ -83,70 +107,10 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Expanded(
                       flex: 3,
-                      child: Container(
-                        // padding: EdgeInsets.symmetric(vertical: 10),
-                        // height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              'TIP',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        totalTip--;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.remove,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '$totalTip',
-                                  style: TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        totalTip++;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.add,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
+                      child: TipBox(
+                        totalTip: totalTip,
+                        onDecrement: onDecrement,
+                        onIncrement: onIncrement,
                       ),
                     ),
                     SizedBox(
@@ -154,32 +118,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Expanded(
                       flex: 2,
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        // height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: TextField(
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              // gapPadding: 30,
-                            ),
-                            label: Text('Tax in %'),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              if (value.isEmpty) {
-                                totalTax = 0;
-                              } else {
-                                totalTax = int.parse(value);
-                              }
-                            });
-                          },
-                        ),
+                      child: TaxBox(
+                        updateTax: updateTax,
                       ),
                     ),
                   ],
