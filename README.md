@@ -11,9 +11,9 @@ A flutter-based app that allows bill splitting. The app will divide the total su
      <td>Result Screen</td>
   </tr>
   <tr>
-    <td><img src="/readMeImages/Home_Screen.png" width="250" height="460"/></td>
-    <td> <img src="/readMeImages/Home_Screen_With_Data.png" width="250" height="460"/> </td>
-    <td> <img src="/readMeImages/Result_Screen.png" width="250" height="460"/></td>
+    <td><img src="assets/screenshots/Home_Screen.png" width="250" height="460"/></td>
+    <td> <img src="assets/screenshots/Home_Screen_With_Data.png" width="250" height="460"/> </td>
+    <td> <img src="assets/screenshots/Result_Screen.png" width="250" height="460"/></td>
   </tr>
  </table>
 
