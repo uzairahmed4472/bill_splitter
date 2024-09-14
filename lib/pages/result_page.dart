@@ -1,6 +1,7 @@
 import 'package:bill_splitter/constants.dart';
 import 'package:bill_splitter/pages/home_page.dart';
 import 'package:bill_splitter/widgets/info_container.dart';
+import 'package:bill_splitter/widgets/page_header.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatefulWidget {
@@ -59,16 +60,7 @@ class _ResultPageState extends State<ResultPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Result',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              PageHeader(header: "Equally Divided"),
               SizedBox(
                 height: 20,
               ),

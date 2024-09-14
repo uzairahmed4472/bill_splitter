@@ -2,6 +2,8 @@ import 'package:bill_splitter/constants.dart';
 import 'package:bill_splitter/pages/result_page.dart';
 import 'package:bill_splitter/widgets/info_container.dart';
 import 'package:bill_splitter/widgets/keypad.dart';
+import 'package:bill_splitter/widgets/page_header.dart';
+import 'package:bill_splitter/widgets/slider_box.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,6 +30,11 @@ class _HomePageState extends State<HomePage> {
       totalBill.isEmpty || totalBill.length == 1 && totalBill[0] == ""
           ? 0.toString()
           : totalBill.join();
+  void updateFriends(double newValue) {
+    setState(() {
+      totalFriends = newValue.round();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +48,8 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    child: Text(
-                      'Split Bill',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                PageHeader(
+                  header: 'Split Bill',
                 ),
                 SizedBox(
                   height: 10,
@@ -67,21 +65,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Column(
                   children: [
-                    Container(
-                      child: Text(
-                        "How many friends ?",
-                        style: ktextStyle1,
-                      ),
+                    Text(
+                      "How many friends ?",
+                      style: ktextStyle1,
                     ),
-                    Slider(
-                      min: 2,
-                      max: 9,
-                      value: totalFriends.ceilToDouble(),
-                      onChanged: (newValue) {
-                        setState(() {
-                          totalFriends = newValue.round();
-                        });
-                      },
+                    SiderBox(
+                      totalFriends: totalFriends,
+                      updateFriends: updateFriends,
                     ),
                   ],
                 ),

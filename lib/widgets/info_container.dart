@@ -1,4 +1,3 @@
-
 import 'package:bill_splitter/constants.dart';
 import 'package:flutter/material.dart';
 
