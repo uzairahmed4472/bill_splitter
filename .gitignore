@@ -21,9 +21,7 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
-/linux/
-/web/
-/windows/
+
 
 # Flutter/Dart/Pub related
 **/doc/api/
