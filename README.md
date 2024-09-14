@@ -1,16 +1,31 @@
-# bill_splitter
+# BillSplitApp
 
-A new Flutter project.
+A flutter-based app that allows bill splitting. The app will divide the total sum equally among the group of friends based on the user's selection of the number of friends, the tip to be given, and the applicable tax. My very first flutter application.
 
-## Getting Started
+# Screenshots
 
-This project is a starting point for a Flutter application.
+<table>
+  <tr>
+    <td>Home Screen</td>
+     <td>Home Screen With Data</td>
+     <td>Result Screen</td>
+  </tr>
+  <tr>
+    <td><img src="/readMeImages/Home_Screen.png" width="250" height="460"/></td>
+    <td> <img src="/readMeImages/Home_Screen_With_Data.png" width="250" height="460"/> </td>
+    <td> <img src="/readMeImages/Result_Screen.png" width="250" height="460"/></td>
+  </tr>
+ </table>
 
-A few resources to get you started if this is your first Flutter project:
+# Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Home Screen UI
+- Slider for specifying the number of friends
+- Tip increment decrement counter
+- Tax textfield
+- Result Screen UI
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Technologies/Concepts used
+
+- Flutter
+- Ephemeral state management
